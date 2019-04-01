@@ -1,0 +1,45 @@
+-module('erlang-supervisor').
+
+-behavior(supervisor).
+
+-export([
+    start_link/0,
+    start_in_shell/0,
+    stop/0,
+    init/1
+]).
+
+start_link() ->
+    supervisor:start_link({local, ?MODULE}, ?MODULE, []).
+
+start_in_shell() ->
+    {ok, Pid} = start_link(),
+    unlink(Pid).
+
+stop() ->
+    Pid = whereis(?MODULE),
+    unlink(Pid),
+    exit(Pid, shutdown).
+
+init([]) ->
+    {ok, {
+        {one_for_one, 3, 10},
+        [
+            {
+                adder,
+                {adder_server, start_link, []},
+                permanent,
+                10000,
+                worker,
+                [adder_server]
+            },
+            {
+                multiplier,
+                {multiplier_server, start_link, []},
+                permanent,
+                10000,
+                worker,
+                [multiplier_server]
+            }
+        ]
+    }}.
