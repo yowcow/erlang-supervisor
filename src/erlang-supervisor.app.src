@@ -1,13 +1,29 @@
 {application, 'erlang-supervisor',
  [{description, "An OTP library"},
   {vsn, "0.1.0"},
-  {registered, []},
   {applications,
    [kernel,
     stdlib
    ]},
   {env,[]},
-  {modules, []},
+
+  {modules, [
+    'erlang-supervisor',
+    adder_server,
+    divider_server,
+    multiplier_server,
+    my_alarm_handler,
+    server_supervisor
+  ]},
+
+  {registered, [
+    adder_server,
+    divider_server,
+    multiplier_server,
+    server_supervisor
+  ]},
+
+  {mod, {'erlang-supervisor', []}},
 
   {licenses, ["Apache 2.0"]},
   {links, []}
