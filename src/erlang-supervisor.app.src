@@ -13,14 +13,14 @@
     divider_server,
     multiplier_server,
     my_alarm_handler,
-    server_supervisor
+    server_sup
   ]},
 
   {registered, [
     adder_server,
     divider_server,
     multiplier_server,
-    server_supervisor
+    server_sup
   ]},
 
   {mod, {'erlang-supervisor', []}},

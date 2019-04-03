@@ -8,7 +8,7 @@
 ]).
 
 start(_Type, Args) ->
-    server_supervisor:start_link(Args).
+    server_sup:start_link(Args).
 
 stop(_State) ->
     ok.

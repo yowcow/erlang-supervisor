@@ -1,4 +1,4 @@
--module(server_supervisor).
+-module(server_sup).
 
 -behavior(supervisor).
 
