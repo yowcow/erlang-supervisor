@@ -3,7 +3,7 @@
 -behavior(gen_server).
 
 -export([
-    add/1,
+    do/1,
     start_link/0,
     stop/0
 ]).
@@ -23,7 +23,7 @@ start_link() ->
 stop() ->
     gen_server:stop(?MODULE).
 
-add(Thing) ->
+do(Thing) ->
     gen_server:call(?MODULE, {add, Thing}, 20000).
 
 init([]) ->

@@ -22,11 +22,11 @@ stop() ->
     exit(Pid, shutdown).
 
 init([]) ->
-    gen_event:swap_handler(
-        alarm_handler,
-        {alarm_handler, swap},
-        {my_alarm_handler, xyz}
-    ),
+    %gen_event:swap_handler(
+    %    alarm_handler,
+    %    {alarm_handler, swap},
+    %    {my_alarm_handler, xyz}
+    %),
     {ok, {
         {one_for_one, 3, 10},
         [
