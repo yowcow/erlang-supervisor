@@ -35,9 +35,9 @@ handle_call({divide, [A, B]}, _From, N) ->
     Result = A / B,
     {reply, Result, N + 1};
 handle_call({divide, [A, B, C]}, _From, N) ->
-    alarm_handler:set_alarm(tooHot),
+    %alarm_handler:set_alarm(tooHot),
     Result = A / B / C,
-    alarm_handler:clear_alarm(tooHot),
+    %alarm_handler:clear_alarm(tooHot),
     {reply, Result, N + 1};
 handle_call(Param, _From, N) ->
     error_logger:error_msg("invalid input: ~p", [Param]),
